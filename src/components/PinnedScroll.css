@@ -1,0 +1,36 @@
+.section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+.content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: center center;
+    transform-style: preserve-3d;
+}
+
+.scale-container {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.line-block {
+    display: block;
+    transform-origin: center;
+    line-height: 1.2em;
+}
+
+.char-block {
+    display: inline-block;
+    transform-origin: center;
+    will-change: transform, opacity;
+    color: #fff;
+    text-shadow: 0 0 8px #fff, 0 0 16px #0ff;
+    /* glowing effect */
+}

@@ -1,0 +1,19 @@
+.nebula-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, var(--accent-glow) 0%, transparent 70%),
+        radial-gradient(circle at 70% 70%, var(--accent-secondary) 0%, transparent 80%);
+    opacity: 0.5;
+    filter: blur(150px);
+    z-index: 0;
+}
+
+.perspective-1500 {
+    perspective: 1500px;
+}
+
+
+.motion-card,
+.motion-icon {
+    will-change: transform;
+}

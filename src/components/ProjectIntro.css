@@ -1,0 +1,95 @@
+.section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    perspective: 1000px;
+}
+
+.content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: center center;
+    transform-style: preserve-3d;
+    /* keeps children in 3D space */
+    backface-visibility: hidden;
+    /* avoids blurry text when rotating/scaling */
+    will-change: transform;
+    /* hints GPU for better performance */
+}
+
+.line-block {
+    display: block;
+    transform-origin: center;
+    line-height: 1.2em;
+}
+
+.white-wipe {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 100vw;
+    /* full width */
+    transform: translateX(-50%) scaleX(0);
+    transform-origin: center center;
+    /* expand from middle */
+
+    z-index: 200;
+    /* above starfield */
+    pointer-events: none;
+    border: 1px dashed white;
+    border-top: none;
+    border-bottom: none;
+}
+
+.scale-container {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+/* Sharp text scaling fixes */
+.scale-container h1 {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform;
+    /* Force GPU acceleration */
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.sharp-text {
+    /* -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: geometricPrecision;
+    backface-visibility: hidden;
+    transform: translateZ(0); */
+
+    /* 1. Standard Anti-Aliasing (Already present, but essential) */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* geometricPrecision is often better for sharp, transformed text */
+    text-rendering: geometricPrecision;
+
+    /* 2. Critical: Enforce high-quality GPU rendering */
+    /* This forces the browser to treat the element as a 3D object on its own layer, 
+       often preventing pre-rasterization at low-resolution. */
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    will-change: transform, scale;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+
+    /* 3. The most critical fix: Text Stroke */
+    /* By adding a transparent or semi-transparent stroke, you force the browser 
+       to re-render the font geometry more carefully for every frame, 
+       significantly reducing blur during large scales. */
+    -webkit-text-stroke: 0.001px white;
+    /* Or transparent, but white works well */
+    text-stroke: 0.001px white;
+}
