@@ -10,7 +10,8 @@ export function ContactModified() {
         scrollYProgress
     } = useScroll({
         target: ref,
-        offset: ['start end', 'end start']
+        // offset: ['start end', 'end start']
+        offset: ['start 95%', 'center 5%']
     });
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [formData, setFormData] = useState({

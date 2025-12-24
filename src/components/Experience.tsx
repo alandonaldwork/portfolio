@@ -111,10 +111,10 @@ export function Experience() {
                     <h3 className="text-xl font-bold text-primary mb-1">
                       {exp.title}
                     </h3>
-                    <div className="flex items-center gap-2 text-secondary">
+                    {/* <div className="flex items-center gap-2 text-secondary">
                       <BriefcaseIcon className="w-4 h-4" />
                       <span className="font-medium">{exp.company}</span>
-                    </div>
+                    </div> */}
                   </div>
                   <span className="px-4 py-1 bg-accent/10 gradient-text rounded-full text-sm font-medium border border-accent/20">
                     {exp.period}

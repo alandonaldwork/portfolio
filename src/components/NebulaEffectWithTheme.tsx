@@ -181,7 +181,6 @@ const NebulaEffectWithTheme: React.FC = () => {
         const canvas = canvasRef.current!;
         const title = titleRef.current!;
         const ring = ringRef.current!;
-        const flash = flashRef.current!;
         const section = containerRef.current!;
 
         const tl = gsap.timeline({
@@ -191,6 +190,7 @@ const NebulaEffectWithTheme: React.FC = () => {
                 end: "+=2700",
                 scrub: 1.3,
                 pin: true,
+                anticipatePin: 1,
             },
         });
 

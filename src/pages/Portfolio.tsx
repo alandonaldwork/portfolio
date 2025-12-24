@@ -48,9 +48,6 @@ export function Portfolio() {
           <p className="text-secondary text-sm">
             © 2024 Full-Stack Developer. All rights reserved.
           </p>
-          {/* <p className="text-tertiary text-sm">
-            Built with React, TypeScript, Tailwind CSS & Framer Motion
-          </p> */}
         </div>
       </div>
     </footer>
