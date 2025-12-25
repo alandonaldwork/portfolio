@@ -114,17 +114,31 @@ export function Hero() {
           }} transition={{
             delay: 0.3
           }} className="text-5xl md:text-5xl font-bold mb-6 text-primary leading-tight">
+            {/* Building
             <TypeAnimation
               sequence={[
-                "Building Digital", 1000,
-                "Building Seamless", 1000,
-                "Building Modern", 1000,
-                "Building Interactive", 1000,
+                " Digital", 1000,
+                " Seamless", 1000,
+                " Modern", 1000,
+                " Interactive", 1000,
               ]}
               wrapper="span"
               repeat={Infinity}
-            />
-
+            /> */}
+            <div className="building-container">
+              <span className="building-text">Building</span>
+              <TypeAnimation
+                sequence={[
+                  " Digital", 1000,
+                  " Seamless", 1000,
+                  " Modern", 1000,
+                  " Interactive", 1000,
+                ]}
+                wrapper="span"
+                repeat={Infinity}
+                className="type-animation"
+              />
+            </div>
             <span className="gradient-text block">Experiences</span>
           </motion.h1>
 
