@@ -1,4 +1,4 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useCallback } from 'react';
 import gsap from 'gsap';
 
 export interface Obstacle {
@@ -24,7 +24,8 @@ export const useObstacleSystem = (gameState: 'IDLE' | 'PLAYING' | 'GAME_OVER') =
         const id = Math.random().toString(36).substr(2, 9);
         const y = Math.random() * 90 + 5; // 5% to 95%
         const size = Math.random() * 40 + 20; // 20px - 60px
-        const speed = (Math.random() * 2 + 3) * difficultyRef.current; // Base speed * diff
+        // FIX: Speed was way too high (3-5). Reduced to 0.2 - 0.5 range (vw per frame approx)
+        const speed = (Math.random() * 0.3 + 0.2) * difficultyRef.current;
 
         // Create element
         const el = document.createElement('div');
@@ -33,6 +34,8 @@ export const useObstacleSystem = (gameState: 'IDLE' | 'PLAYING' | 'GAME_OVER') =
         el.style.height = `${size}px`;
         el.style.width = `${size * 1.5}px`; // Rectangular
         el.style.left = '100%'; // Start off screen
+        // Hardware acceleration hint
+        el.style.willChange = 'transform';
 
         containerRef.current.appendChild(el);
 
@@ -55,9 +58,20 @@ export const useObstacleSystem = (gameState: 'IDLE' | 'PLAYING' | 'GAME_OVER') =
 
         // Spawn logic
         // Spawn rate increases with difficulty
-        const spawnRate = Math.max(500, 2000 - difficultyRef.current * 100);
+        // FIX: Much faster spawning for "More than one at a time"
+        // Previous: max(1500, ..) -> New: max(400, ...)
+        // Speed is ~0.3vw/frame. 400ms is ~24 frames * 0.3 = 7vw gap. Very tight but playable.
+        // Let's go with 600ms base.
+        const spawnRate = Math.max(600, 2000 - difficultyRef.current * 300);
+
         if (timeRef.current > spawnRate) {
             spawnObstacle();
+
+            // 30% Chance to spawn a second obstacle immediately (if difficulty is high enough)
+            if (difficultyRef.current > 1.2 && Math.random() > 0.7) {
+                setTimeout(() => spawnObstacle(), 300); // Slight delay for staggered pattern
+            }
+
             timeRef.current = 0;
         }
 

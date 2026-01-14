@@ -31,8 +31,14 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({ gameState, onGameOver, o
 
         // 1. Update Score
         // deltaTime is in ms. Score is seconds.
+        const prevScore = Math.floor(scoreRef.current);
         scoreRef.current += deltaTime / 1000;
-        onScoreUpdate(scoreRef.current);
+        const newScore = Math.floor(scoreRef.current);
+
+        // FIX: Only trigger state update/render if the visible score changed
+        if (newScore > prevScore) {
+            onScoreUpdate(newScore);
+        }
 
         // 2. Update Obstacles
         updateObstacles(deltaTime);
@@ -46,7 +52,8 @@ export const GameCanvas: React.FC<GameCanvasProps> = ({ gameState, onGameOver, o
         // Player is at 10% from left
         const playerX = winW * 0.1;
         const playerYPx = (rawY.current / 100) * winH;
-        const playerRadius = 20; // 40px width/height
+        // FIX: Smaller hitbox for the spaceship (was 20)
+        const playerRadius = 15;
 
         // Iterate active OBSTACLES
         obstaclesRef.current.forEach(obs => {
