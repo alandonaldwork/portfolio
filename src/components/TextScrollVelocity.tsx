@@ -7,7 +7,7 @@ import NebulaBackground from './NebulaBackground';
 import { useLenis } from '../hooks/useLenis';
 
 interface TextScrollVelocityProps {
-    text: string | string[];
+    text?: string | string[];
     baseVelocity?: number;
     direction?: 'left' | 'right';
     className?: string;
