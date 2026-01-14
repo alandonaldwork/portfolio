@@ -79,10 +79,11 @@ export const TextScrollVelocity: React.FC<TextScrollVelocityProps> = ({
 
                 {/* Background Grid with Parallax */}
                 <motion.div
-                    className="absolute grid grid-cols-2 md:grid-cols-2 gap-4 p-4 pointer-events-none saturate-110"
+                    className="absolute grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 pointer-events-none saturate-110"
                     style={{ y: bgY, opacity: 0.35 }}
                     transition={{ ease: 'easeOut' }}
                 >
+
                     {gridImages.map((project, i) => (
                         <div
                             key={i}
