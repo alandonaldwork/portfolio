@@ -17,3 +17,28 @@
 .motion-icon {
     will-change: transform;
 }
+
+@media (max-width: 500px) {
+    .building-container {
+        display: block;
+        margin-bottom: 10px;
+        /* Optional: Adjust spacing between 'Building' and the animation */
+    }
+
+    .building-text {
+        display: block;
+        margin-bottom: 10px;
+        /* Ensures a gap between 'Building' and the typing animation */
+        font-size: 2.65rem;
+        /* Smaller text size for mobile */
+    }
+
+    .type-animation {
+        display: block;
+        /* Forces the animation to appear below 'Building' */
+        font-size: 2.65rem;
+        /* Smaller text size for mobile */
+    }
+
+
+}

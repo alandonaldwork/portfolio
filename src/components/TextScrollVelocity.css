@@ -1,0 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&display=swap');
+
+.text-scroll-velocity-wrapper {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 2rem 0;
+}
+
+.text-scroll-velocity-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.text-scroll-velocity-scroller {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    will-change: transform;
+}
+
+.text-scroll-velocity-text {
+    display: inline-block;
+    margin-right: 2rem;
+    font-family: 'Syne';
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    white-space: nowrap;
+    background: linear-gradient(90deg,
+            rgba(147, 51, 234, 1) 0%,
+            rgba(59, 130, 246, 1) 50%,
+            rgba(147, 51, 234, 1) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease infinite;
+}
+
+/* Gradient animation */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% center;
+    }
+
+    50% {
+        background-position: 100% center;
+    }
+
+    100% {
+        background-position: 0% center;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    .text-scroll-velocity-text {
+        background: linear-gradient(90deg,
+                rgba(168, 85, 247, 1) 0%,
+                rgba(96, 165, 250, 1) 50%,
+                rgba(168, 85, 247, 1) 100%);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+}
+
+/* Responsive font sizes */
+@media (max-width: 768px) {
+    .text-scroll-velocity-text {
+        margin-right: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-scroll-velocity-wrapper {
+        padding: 1.5rem 0;
+    }
+
+    .text-scroll-velocity-text {
+        margin-right: 1rem;
+    }
+}

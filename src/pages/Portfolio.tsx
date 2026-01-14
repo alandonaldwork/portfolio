@@ -22,37 +22,38 @@ import gsap from "gsap";
 import Starfield from '../components/StarFied';
 import BackgroundEffects from '../components/BackgroundEffects';
 import { ContactModified } from '../components/ContactModified';
-
+import TextScrollVelocity from '../components/TextScrollVelocity';
 export function Portfolio() {
   useLenis();
-  // gsap.registerPlugin(ScrollTrigger);
-  // gsap.registerPlugin(ScrollToPlugin);
   return <div className="min-h-screen bg-primary cursor-none">
     <CustomCursorModified />
     <Navigation />
     <Hero />
     <AboutModified />
-    <NebulaEffectWithTheme />
-    {/* <PortalOpeningIntro /> */}
-    {/* <PinnedScrollAnimation /> */}
-    {/* <ProjectsIntro /> */}
+    <TextScrollVelocity
+      text="SELECTED PROJECTS • FEATURED WORK • CREATIVE SOLUTIONS"
+      baseVelocity={0}
+      className="mb-0"
+    />
+    {/* <NebulaEffectWithTheme /> */}
     <ProjectsModified />
     <Experience />
     <Skills />
-    {/* <Testimonials /> */}
     <ContactModified />
-    {/* Footer */}
     <footer className="bg-secondary border-t border-custom py-8">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <p className="text-secondary text-sm">
             © 2024 Full-Stack Developer. All rights reserved.
           </p>
-          {/* <p className="text-tertiary text-sm">
-            Built with React, TypeScript, Tailwind CSS & Framer Motion
-          </p> */}
         </div>
       </div>
     </footer>
   </div>;
 }
+
+{/* <PortalOpeningIntro /> */ }
+{/* <PinnedScrollAnimation /> */ }
+{/* <ProjectsIntro /> */ }
+{/* <Testimonials /> */ }
+{/* Footer */ }

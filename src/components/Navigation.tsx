@@ -4,12 +4,14 @@ import { useScrollProgress } from '../hooks/useScrollProgress';
 import { ThemeToggle } from './ThemeToggle';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { useGame } from '../context/GameContext';
 
 
 export function Navigation() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const progress = useScrollProgress();
+  const { openGame } = useGame();
 
   gsap.registerPlugin(ScrollToPlugin);
 
@@ -94,10 +96,24 @@ export function Navigation() {
                 {item.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300" />
               </motion.button>)}
+
+              {/* Game Button */}
+              {/* <motion.button
+                onClick={openGame}
+                className="px-4 py-1.5 bg-accent-primary/10 border border-accent-primary/30 rounded-full text-accent-primary text-sm font-bold flex items-center gap-2 hover:bg-accent-primary hover:text-white transition-all"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span>🎮</span>
+              </motion.button> */}
+
               <ThemeToggle />
             </div>
 
-            <div className="md:hidden">
+            <div className="md:hidden flex items-center gap-4">
+              <button onClick={openGame} className="text-2xl">🎮</button>
               <ThemeToggle />
             </div>
           </div>
