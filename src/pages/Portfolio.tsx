@@ -31,8 +31,7 @@ export function Portfolio() {
     <Hero />
     <AboutModified />
     <TextScrollVelocity
-      text="SELECTED PROJECTS • FEATURED WORK • CREATIVE SOLUTIONS"
-      baseVelocity={0}
+      baseVelocity={2}
       className="mb-0"
     />
     {/* <NebulaEffectWithTheme /> */}

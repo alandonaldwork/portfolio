@@ -20,7 +20,6 @@ interface TextScrollVelocityProps {
  * Creates an infinite scrolling text effect that reacts to scroll speed
  */
 export const TextScrollVelocity: React.FC<TextScrollVelocityProps> = ({
-    text,
     baseVelocity = 1,
     direction = 'left',
     className = '',
