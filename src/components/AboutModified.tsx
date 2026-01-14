@@ -227,7 +227,7 @@ export function AboutModified() {
                         initial="hidden"
                         whileInView="visible"
                         exit="exit"
-                        viewport={{ once: false, amount: 0.5 }} // triggers when 20% of card is in view
+                        viewport={{ once: true, amount: 0.5 }} // triggers when 20% of card is in view
                         transition={{ type: "spring", stiffness: 300, delay: index * 0.1 }}
                     >
                         {/* Icon with rotation on hover */}
