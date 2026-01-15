@@ -94,7 +94,7 @@ export function Contact() {
             {[{
               Icon: MailIcon,
               label: 'Email',
-              value: 'dev@example.com'
+              value: 'alandonaldwork04@gmail.com'
             }, {
               Icon: PhoneIcon,
               label: 'Phone',

@@ -5,6 +5,7 @@ import { ThemeToggle } from './ThemeToggle';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { useGame } from '../context/GameContext';
+import { useTheme } from '../hooks/useTheme';
 
 
 export function Navigation() {
@@ -56,7 +57,6 @@ export function Navigation() {
       ease: "power2.out"
     });
   };
-
   return <>
     <motion.div className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent z-50" style={{
       scaleX: progress / 100,
@@ -100,21 +100,25 @@ export function Navigation() {
               {/* Game Button */}
               <motion.button
                 onClick={openGame}
-                className="px-4 py-1.5 bg-accent-primary/10 border border-accent-primary/30 rounded-full text-accent-primary text-sm font-bold flex items-center gap-2 hover:bg-accent-primary hover:text-white transition-all"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="relative px-5 py-2 text-sm font-bold text-white rounded-md bg-gradient-to-r from-pink-500 to-purple-600 shadow-lg overflow-hidden"
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{
+                  scale: 1.08,
+                  boxShadow: "0px 0px 20px rgba(236,72,153,0.8)",
+                }}
+                whileTap={{ scale: 0.92 }}
               >
-                <span>🎮</span>
+                <span className="relative z-10">Play</span>
               </motion.button>
 
-              <ThemeToggle />
+
+              {/* <ThemeToggle /> */}
             </div>
 
             <div className="md:hidden flex items-center gap-4">
               <button onClick={openGame} className="text-2xl">🎮</button>
-              <ThemeToggle />
+              {/* <ThemeToggle /> */}
             </div>
           </div>
         </div>

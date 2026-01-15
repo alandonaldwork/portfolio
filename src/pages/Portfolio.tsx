@@ -23,8 +23,11 @@ import Starfield from '../components/StarFied';
 import BackgroundEffects from '../components/BackgroundEffects';
 import { ContactModified } from '../components/ContactModified';
 import TextScrollVelocity from '../components/TextScrollVelocity';
+import { useTheme } from '../hooks/useTheme';
 export function Portfolio() {
   useLenis();
+  useTheme();
+
   return <div className="min-h-screen bg-primary cursor-none">
     <CustomCursorModified />
     <Navigation />

@@ -16,7 +16,7 @@ export const useObstacleSystem = (gameState: 'IDLE' | 'PLAYING' | 'GAME_OVER') =
     const obstaclesRef = useRef<Obstacle[]>([]);
     const containerRef = useRef<HTMLDivElement>(null);
     const timeRef = useRef(0);
-    const difficultyRef = useRef(1);
+    const difficultyRef = useRef(5);
 
     const spawnObstacle = useCallback(() => {
         if (!containerRef.current) return;
@@ -64,7 +64,8 @@ export const useObstacleSystem = (gameState: 'IDLE' | 'PLAYING' | 'GAME_OVER') =
         // Let's go with 600ms base.
         const spawnRate = Math.max(600, 2000 - difficultyRef.current * 300);
 
-        if (timeRef.current > spawnRate) {
+        // Ensure at least 3 obstacles are active, or spawn based on timer
+        if (obstaclesRef.current.length < 3 || timeRef.current > spawnRate) {
             spawnObstacle();
 
             // 30% Chance to spawn a second obstacle immediately (if difficulty is high enough)

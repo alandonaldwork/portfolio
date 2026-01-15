@@ -184,34 +184,36 @@ export function Hero() {
           }} transition={{
             delay: 0.6
           }} className="flex gap-4">
-            {[{
-              Icon: GithubIcon,
-              href: 'https://github.com'
-            }, {
-              Icon: LinkedinIcon,
-              href: 'https://linkedin.com'
-            }, {
-              Icon: MailIcon,
-              href: 'mailto:dev@example.com'
-            }].map(({
-              Icon,
-              href
-            }, index) => <motion.a key={href} href={href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-secondary hover:text-primary hover:bg-accent/10 transition-colors" whileHover={{
-              scale: 1.1,
-              rotate: 5
-            }} whileTap={{
-              scale: 0.9
-            }} initial={{
-              opacity: 0,
-              y: 20
-            }} animate={{
-              opacity: 1,
-              y: 0
-            }} transition={{
-              delay: 0.7 + index * 0.1
-            }}>
-                <Icon className="w-5 h-5" />
-              </motion.a>)}
+            {[
+              //   {
+              //   Icon: GithubIcon,
+              //   href: 'https://github.com'
+              // },
+              {
+                Icon: LinkedinIcon,
+                href: 'https://linkedin.com'
+              }, {
+                Icon: MailIcon,
+                href: 'mailto:alandonaldwork04@gmail.com'
+              }].map(({
+                Icon,
+                href
+              }, index) => <motion.a key={href} href={href} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full bg-secondary flex items-center justify-center text-secondary hover:text-primary hover:bg-accent/10 transition-colors" whileHover={{
+                scale: 1.1,
+                rotate: 5
+              }} whileTap={{
+                scale: 0.9
+              }} initial={{
+                opacity: 0,
+                y: 20
+              }} animate={{
+                opacity: 1,
+                y: 0
+              }} transition={{
+                delay: 0.7 + index * 0.1
+              }}>
+                  <Icon className="w-5 h-5" />
+                </motion.a>)}
           </motion.div>
         </motion.div>
 

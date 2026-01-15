@@ -12,8 +12,8 @@ export function ThemeToggle() {
   }} whileTap={{
     scale: 0.9
   }} aria-label="Toggle theme">
-      <AnimatePresence mode="wait">
-        {theme === 'light' ? <motion.div key="sun" initial={{
+    <AnimatePresence mode="wait">
+      {theme === 'light' ? <motion.div key="sun" initial={{
         rotate: -90,
         opacity: 0
       }} animate={{
@@ -25,8 +25,8 @@ export function ThemeToggle() {
       }} transition={{
         duration: 0.2
       }}>
-            <SunIcon className="w-5 h-5 text-primary" />
-          </motion.div> : <motion.div key="moon" initial={{
+        <SunIcon className="w-5 h-5 text-primary" />
+      </motion.div> : <motion.div key="moon" initial={{
         rotate: 90,
         opacity: 0
       }} animate={{
@@ -38,8 +38,8 @@ export function ThemeToggle() {
       }} transition={{
         duration: 0.2
       }}>
-            <MoonIcon className="w-5 h-5 text-primary" />
-          </motion.div>}
-      </AnimatePresence>
-    </motion.button>;
+        <MoonIcon className="w-5 h-5 text-primary" />
+      </motion.div>}
+    </AnimatePresence>
+  </motion.button>;
 }

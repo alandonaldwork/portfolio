@@ -5,6 +5,7 @@ import Starfield from './StarFied';
 import BackgroundEffects from './BackgroundEffects';
 import NebulaBackground from './NebulaBackground';
 import { useLenis } from '../hooks/useLenis';
+// import parallaxBg from '../assets/parallax-bg.png';
 
 interface TextScrollVelocityProps {
     text?: string | string[];
@@ -14,7 +15,7 @@ interface TextScrollVelocityProps {
     textClassName?: string;
     fontSize?: string;
 }
-
+const parallaxBg = "https://plus.unsplash.com/premium_photo-1685786788009-2ab6cd0349b1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YWJzdHJhY3QlMjBkYXJrJTIwbmVidWxhfGVufDB8fDB8fHww"
 /**
  * TextScrollVelocity - An interactive component with parallax effect
  * Creates an infinite scrolling text effect that reacts to scroll speed
@@ -32,23 +33,8 @@ export const TextScrollVelocity: React.FC<TextScrollVelocityProps> = ({
         offset: ["start start", "end end"]
     });
 
-    const projects = [{
-        title: 'AI Content Generator',
-        image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80',
-    }, {
-        title: 'Social Media Scheduler',
-        image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=800&q=80',
-    }, {
-        title: 'Video Streaming Platform',
-        image: 'https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&q=80',
-    }];
-
-    // Duplicate projects to fill the grid - ensured enough content for -100% scroll
-    const gridImages = [...projects, ...projects, ...projects];
-
     // Background parallax effect - starts from bottom (100%) and moves up (-100%)
-    const bgY = useTransform(scrollYProgress, [0, 1], ["80%", "-30%"]);
-
+    // const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
 
     // Direction factor
     const directionFactor = direction === 'right' ? -1 : 1;
@@ -75,30 +61,6 @@ export const TextScrollVelocity: React.FC<TextScrollVelocityProps> = ({
             <Starfield />
             <NebulaBackground opacity={0.7} zIndex={0} />
             <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col justify-center bg-background">
-
-                {/* Background Grid with Parallax */}
-                <motion.div
-                    className="absolute grid grid-cols-1 sm:grid-cols-2 gap-4 p-4 pointer-events-none saturate-110"
-                    style={{ y: bgY, opacity: 0.35 }}
-                    transition={{ ease: 'easeOut' }}
-                >
-
-                    {gridImages.map((project, i) => (
-                        <div
-                            key={i}
-                            className="rounded-lg overflow-hidden relative aspect-video"
-                        >
-                            <img
-                                src={project.image}
-                                alt=""
-                                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                            />
-                            <div className="absolute inset-0 bg-black/20" />
-                        </div>
-                    ))}
-                    <div className="absolute inset-0 bg-background/40 backdrop-blur-[1px]" />
-                </motion.div>
-
                 {/* Foreground Scrolling Text */}
                 <div className="relative z-10 flex flex-col justify-center h-full gap-8">
                     {styles.map((style, i) => (
